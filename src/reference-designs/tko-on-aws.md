@@ -37,7 +37,7 @@ Tanzu Kubernetes Grid ships with the AWS cloud storage driver, which allows you 
 
   * gp2 - General Purpose SSD (default storage class)
   * io1 - IOPS provisioned SSD
-  * st1 - Throughput Optimized HHD
+  * st1 - Throughput Optimized HDD
   * sc1 - Cold HDD
 
 For more information on the available storage options see [Amazon EBS volume types](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-volume-types.html).  
