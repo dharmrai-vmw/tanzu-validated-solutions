@@ -24,7 +24,7 @@ Tanzu for Kubernetes Operations comprises the following components:
 
 Tanzu for Kubernetes Operations puts all these components together into a coherent solution:
 
-![](img/tko-on-vsphere/TKO-Ref-Arch.jpg)
+![Tanzu for Kubernetes Operations components](img/tko-on-vsphere/TKO-Ref-Arch.jpg)
 
 Figure 1 - Tanzu for Kubernetes Operations
 
@@ -49,7 +49,7 @@ Tanzu Kubernetes Grid comprises the following components:
 
 **Management Cluster -** A management cluster is the first element that you deploy when you create a Tanzu Kubernetes Grid instance. The management cluster is a Kubernetes cluster that performs the role of the primary management and operational center for the Tanzu Kubernetes Grid instance. The management cluster is purpose-built for operating the platform and managing the lifecycle of Tanzu Kubernetes clusters.
 
-**Cluster API -** TKG functions through the creation of a management Kubernetes cluster which houses [Cluster API](https://cluster-api.sigs.k8s.io/). The Cluster API then interacts with the infrastructure provider to service workload Kubernetes cluster lifecycle requests.
+**Cluster API -** Tanzu Kubernetes Grid functions through the creation of a management Kubernetes cluster which houses [Cluster API](https://cluster-api.sigs.k8s.io/). The Cluster API then interacts with the infrastructure provider to service workload Kubernetes cluster lifecycle requests.
 
 **Tanzu Kubernetes Cluster -** Tanzu Kubernetes clusters are the Kubernetes clusters in which your application workloads run. These clusters are also referred to as workload clusters. Tanzu Kubernetes clusters can run different versions of Kubernetes, depending on the needs of the applications they run.
 
@@ -73,9 +73,9 @@ Tanzu Kubernetes Grid integrates with shared datastores available in the vSphere
 - NFS
 - vVols
 
-TKG Cluster Plans can be defined by operators to use a certain vSphere datastore when creating new workload clusters. All developers then have the ability to provision container-backed persistent volumes from that underlying datastore.
+Tanzu Kubernetes Grid Cluster Plans can be defined by operators to use a certain vSphere datastore when creating new workload clusters. All developers then have the ability to provision container-backed persistent volumes from that underlying datastore.
 
-Tanzu Kubernetes Grid is agnostic to which option you choose. For Kubernetes stateful workloads, TKG installs the [vSphere Container Storage interface (vSphere CSI)](https://github.com/container-storage-interface/spec/blob/master/spec.md) to automatically provision Kubernetes persistent volumes for pods.
+Tanzu Kubernetes Grid is agnostic to which option you choose. For Kubernetes stateful workloads, Tanzu Kubernetes Grid installs the [vSphere Container Storage interface (vSphere CSI)](https://github.com/container-storage-interface/spec/blob/master/spec.md) to automatically provision Kubernetes persistent volumes for pods.
 
 [VMware vSAN](https://docs.vmware.com/en/VMware-vSAN/index.html) is a recommended storage solution for deploying Tanzu Kubernetes Grid clusters on vSphere.
 
@@ -85,9 +85,9 @@ Tanzu Kubernetes Grid is agnostic to which option you choose. For Kubernetes sta
 
 While the default vSAN storage policy can be used, administrators should evaluate the needs of their applications and craft a specific [vSphere Storage Policy](https://docs.vmware.com/en/VMware-vSphere/6.7/com.vmware.vsphere.storage.doc/GUID-89091D59-D844-46B2-94C2-35A3961D23E7.html). vSAN storage policies describe classes of storage (For example, SSD or NVME) along with quotas for your clusters.
 
-![](img/tko-on-vsphere/tko-on-vsphere-vds-2.png)
+![Tanzu for Kubernetes Grid storage integration with vSAN](img/tko-on-vsphere/tko-on-vsphere-vds-2.png)
 
-Figure 2  - TKG Storage integration example with vSAN
+Figure 2  - TKG storage integration example with vSAN
 
 ## **Tanzu Kubernetes Clusters Networking**
 A Tanzu Kubernetes cluster provisioned by Tanzu Kubernetes Grid supports two Container Network Interface (CNI) options:
@@ -122,7 +122,7 @@ Tanzu Kubernetes Grid on vSphere can be deployed on various networking stacks in
 
 **Note:** The scope of this document is limited to vSphere Networking.
 
-## **TKG on vSphere Networking with NSX ALB**
+## **Tanzu Kubernetes Grid on vSphere Networking with NSX ALB**
 Tanzu Kubernetes Grid when deployed on the vSphere networking uses the distributed port groups to provide connectivity to Kubernetes control plane VMs, worker nodes, services, and applications. All hosts from the cluster where Tanzu Kubernetes clusters are deployed are connected to the distributed switch that provides connectivity to the Kubernetes environment.
 
 Tanzu Kubernetes Grid leverages NSX Advanced Load Balancer to provide L4 load balancing for the Tanzu Kubernetes Clusters Control-Plane HA and L7 ingress to the applications deployed in the Tanzu Kubernetes clusters. Users access the applications by connecting to the virtual IP address (VIP) of the applications provisioned by NSX ALB.
@@ -137,7 +137,7 @@ NSX ALB is deployed in Write Access Mode in the vSphere environment. This mode g
   - Clusterrole and Clusterrolebinding
   - Configmap required for the AKO controller and other artifacts.
 
-TKG management clusters have an AKO operator installed out of the box during cluster deployment. By default, a TKG management cluster has a couple of AkoDeploymentConfig created which dictates when and how AKO pods are created in the workload clusters. For more information, see [AKO Operator documentation](https://github.com/vmware/load-balancer-and-ingress-services-for-kubernetes/tree/master/ako-operator).
+Tanzu Kubernetes Grid management clusters have an AKO operator installed out of the box during cluster deployment. By default, a Tanzu Kubernetes Grid management cluster has a couple of AkoDeploymentConfig created which dictates when and how AKO pods are created in the workload clusters. For more information, see [AKO Operator documentation](https://github.com/vmware/load-balancer-and-ingress-services-for-kubernetes/tree/master/ako-operator).
 
 Each environment configured in NSX ALB is referred to as a cloud. Each cloud in NSX ALB maintains networking and NSX ALB Service Engine settings. The cloud is configured with one or more VIP networks to provide IP addresses to load balancing (L4 or L7) virtual services created under that cloud.
 
@@ -146,25 +146,25 @@ The virtual services can span across multiple service engines if the associated 
 IP address allocation for virtual services can be over DHCP or using NSX ALB in-built IPAM functionality.  The VIP networks created or configured in NSX ALB are associated with the IPAM profile.
 
 # **Network Architecture**
-For the deployment of TKG in the vSphere environment, it is required to build separate networks for the TKG management cluster, TKG workload clusters, NSX ALB management, cluster-VIP network for control plane HA, TKG management VIP or data network, and TKG workload data or VIP Network.
+For the deployment of Tanzu Kubernetes Grid in the vSphere environment, it is required to build separate networks for the Tanzu Kubernetes Grid management cluster and workload clusters, NSX ALB management, cluster-VIP network for control plane HA, Tanzu Kubernetes Grid management VIP or data network, and Tanzu Kubernetes Grid workload data or VIP network.
 
 The network reference design can be mapped into this general framework.
 
-![](img/tko-on-vsphere/tko-on-vsphere-vds-3.png)
+![Tanzu for Kubernetes Grid network layout](img/tko-on-vsphere/tko-on-vsphere-vds-3.png)
 
-Figure 3 - TKG General Network Layout
+Figure 3 - TKG general network layout
 
 This topology enables the following benefits:
 
-- Isolate and separate SDDC management components (vCenter, ESX) from the TKG components. This reference design allows only the minimum connectivity between the TKG clusters and NSX ALB to the vCenter Server.
-- Isolate and separate NSX ALB management network from the TKG management segment and the TKG workload segments.
-- Depending on the workload cluster type and use case, multiple workload clusters may leverage the same workload network or new networks can be used for each workload cluster. To isolate and separate TKG workload cluster networking from each other it’s recommended to make use of separate networks for each workload cluster and configure the required firewall between these networks. For more information, see [Firewall Requirements](#firewall-requirements).
-- Separate provider and tenant access to the TKG environment.
-  - Only provider administrators need access to the TKG management cluster. This prevents tenants from attempting to connect to the TKG management cluster.
-- Only allow tenants to access their TKG workload clusters and restrict access to this cluster from other tenants.
+- Isolate and separate SDDC management components (vCenter, ESX) from the Tanzu Kubernetes Grid components. This reference design allows only the minimum connectivity between the Tanzu Kubernetes Grid clusters and NSX ALB to the vCenter Server.
+- Isolate and separate NSX ALB management network from the Tanzu Kubernetes Grid management segment and the Tanzu Kubernetes Grid workload segments.
+- Depending on the workload cluster type and use case, multiple workload clusters may leverage the same workload network or new networks can be used for each workload cluster. To isolate and separate Tanzu Kubernetes Grid workload cluster networking from each other it’s recommended to make use of separate networks for each workload cluster and configure the required firewall between these networks. For more information, see [Firewall Requirements](#firewall-requirements).
+- Separate provider and tenant access to the Tanzu Kubernetes Grid environment.
+  - Only provider administrators need access to the Tanzu Kubernetes Grid management cluster. This prevents tenants from attempting to connect to the TKG management cluster.
+- Only allow tenants to access their Tanzu Kubernetes Grid workload clusters and restrict access to this cluster from other tenants.
 
 ## **Network Requirements**
-As per the defined architecture, the list of required networks:
+As per the defined architecture, the list of required networks follows:
 
 
 |**Network Type**<p></p>|**DHCP Service**|<p>**Description & Recommendations**</p><p></p>|
@@ -218,20 +218,22 @@ To prepare the firewall, you need to gather the following information:
 
 # **Installation Experience**
 
-TKG management cluster is the first component that you deploy to get started with Tanzu Kubernetes Grid.
+Tanzu Kubernetes Grid management cluster is the first component that you deploy to get started with Tanzu Kubernetes Grid.
 
 You can deploy the management cluster in two ways:
 
-- Run the Tanzu Kubernetes Grid installer, a wizard interface that guides you through the process of deploying a management cluster. This is the recommended method if you are installing a TKG management cluster for the first time.
+- Run the Tanzu Kubernetes Grid installer, a wizard interface that guides you through the process of deploying a management cluster. This is the recommended method if you are installing a Tanzu Kubernetes Grid management cluster for the first time.
 - Create and edit YAML configuration files, and use them to deploy a management cluster with the CLI commands.
 
-The TKG Installation user interface shows that, in the current version, it is possible to install TKG on vSphere (including VMware Cloud on AWS), AWS EC2, and Microsoft Azure. The UI provides a guided experience tailored to the IaaS, in this case, VMware vSphere.
+The Tanzu Kubernetes Grid Installation user interface shows that, in the current version, it is possible to install Tanzu Kubernetes Grid on vSphere (including VMware Cloud on AWS), AWS EC2, and Microsoft Azure. The UI provides a guided experience tailored to the IaaS, in this case, VMware vSphere.
 
-![](img/tko-on-vsphere/tko-on-vsphere-vds-4.png)
+![Tanzu for Kubernetes Grid installer welcome screen](img/tko-on-vsphere/tko-on-vsphere-vds-4.png)
+
+Figure 4 - TKG installer welcome screen.
 
 The installation of TKG on vSphere is done through the same installer UI but tailored to a vSphere environment.
 
-![](img/tko-on-vsphere/tko-on-vsphere-vds-5.png)
+![Tanzu for Kubernetes Grid installer UI for vSphere](img/tko-on-vsphere/tko-on-vsphere-vds-5.png)
 
 Figure 5 - TKG installer user interface for vSphere.
 
@@ -286,7 +288,7 @@ For more information about Contour, see the [Contour](https://projectcontour.io/
 
 Another option is to use the NSX Advanced Load Balancer Kubernetes ingress controller which offers an advanced L7 ingress for containerized applications that are deployed in the Tanzu Kubernetes workload cluster.
 
-![](img/tko-on-vsphere/tko-on-vsphere-vds-6.png)
+![NSX Advanced Load Balancing capabilities for VMware Tanzu](img/tko-on-vsphere/tko-on-vsphere-vds-6.png)
 
 Figure 6 - NSX Advanced Load Balancing capabilities for VMware Tanzu
 
@@ -344,7 +346,7 @@ There are three main supported installation methods for Harbor:
 - [**Helm-based deployment**](https://goharbor.io/docs/2.1.0/install-config/harbor-ha-helm/) to a Kubernetes cluster - this installation method may be preferred for customers already invested in Helm.
 - [**VM-based deployment using docker-compose**](https://goharbor.io/docs/2.1.0/install-config/installation-prereqs/) - this installation method is recommended in cases where Tanzu Kubernetes Grid is installed in an air-gapped environment and no pre-existing Kubernetes clusters exist on which Harbor can be installed.
 
-![](img/tko-on-vsphere/tko-on-vsphere-vds-7.png)
+![Harbor Container Registry](img/tko-on-vsphere/tko-on-vsphere-vds-7.png)
 
 Figure 7 - Harbor Container Registry
 
@@ -361,7 +363,9 @@ Tanzu Kubernetes Grid includes signed binaries for Prometheus and Grafana that y
 
 You deploy Prometheus and Grafana on Tanzu Kubernetes clusters. The following diagram shows how the monitoring components on a cluster interact.
 
-![how the monitoring components on a cluster interact](img/tko-on-vsphere/images-monitoring-stack.png)
+![Monitoring components interaction in a cluster](img/tko-on-vsphere/images-monitoring-stack.png)
+
+Figure 8 - Interaction of monitoring components
 
 
 
@@ -427,7 +431,7 @@ To define different custom configurations for control plane nodes and worker nod
 - `VSPHERE_WORKER_MEM_MIB: 4096`
 
 # Summary
-TKG on vSphere on hyper-converged hardware offers high-performance potential, convenience, and addresses the challenges of creating, testing, and updating on-premise Kubernetes platforms in a consolidated production environment. This validated approach will result in a near-production quality installation with all the application services needed to serve combined or uniquely separated workload types through a combined infrastructure solution.
+Tanzu Kubernetes Grid on vSphere on hyper-converged hardware offers high-performance potential, convenience, and addresses the challenges of creating, testing, and updating on-premise Kubernetes platforms in a consolidated production environment. This validated approach will result in a near-production quality installation with all the application services needed to serve combined or uniquely separated workload types through a combined infrastructure solution.
 
 This plan meets many Day 0 needs for quickly aligning product capabilities to full stack infrastructure, including networking, firewalling, load balancing, workload compute alignment, and other capabilities.
 
