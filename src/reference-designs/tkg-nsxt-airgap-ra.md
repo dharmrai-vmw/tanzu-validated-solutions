@@ -11,7 +11,7 @@ This document lays out a reference design for deploying Tanzu Kubernetes Grid on
 The following table provides the component versions and interoperability matrix supported with the reference design:
 
 |**Software Components**|**Version**|
-| - | - |
+| --- | --- |
 |Tanzu Kubernetes Grid|1.6.0|
 |VMware vSphere ESXi|7.0 U3d and later|
 |VMware vCenter Server|7.0 U3d and later|
@@ -215,7 +215,7 @@ As per the defined architecture, the list of required networks follows:
 
 For the purpose of this demonstration, this document makes use of the following CIDRs for Tanzu Kubernetes Grid deployment.
 
-|**Network Type**|**Segment Name**|**Gateway CIDR**|**DHCP Pool in NSXT**|**NSX ALB IP Pool**|
+|**Network Type**|**Segment Name**|**Gateway CIDR**|**DHCP Pool in NSX-T**|**NSX ALB IP Pool**|
 | --- | --- | --- | --- | --- |
 |NSX ALB Management Network|alb-mgmt-ls|172.19.71.1/27|N/A|172.19.71.6 - 172.19.71.30|
 |TKG Cluster VIP Network|tkg-cluster-vip|172.19.75.1/26|N/A|172.19.75.2 - 172.19.75.60|
