@@ -772,7 +772,7 @@ The Tanzu Kubernetes Grid installer wizard is an easy way to deploy the cluster.
 
     ![Kubernetes Network](img/tko-in-vmc-aws/deploy-tko-vmc-54.jpg)
 
-    If LDAP is configured in your environment, see the [VMware documentation](https://docs.vmware.com/en/VMware-Tanzu-Kubernetes-Grid/1.3/vmware-tanzu-kubernetes-grid-13/GUID-mgmt-clusters-enabling-id-mgmt.html) for instructions on how to integrate an identity management system with Tanzu Kubernetes Grid.
+    If LDAP is configured in your environment, see [Configure Identity Management](https://docs.vmware.com/en/VMware-Tanzu-Kubernetes-Grid/1.5/vmware-tanzu-kubernetes-grid-15/GUID-iam-configure-id-mgmt.html) for instructions on how to integrate an identity management system with Tanzu Kubernetes Grid.
 
     In this example, identity management integration is disabled.
 
