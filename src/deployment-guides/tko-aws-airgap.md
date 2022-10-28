@@ -60,7 +60,7 @@ The following describes the steps to create your AWS environment and configure y
 
 ### Create an Internet-Restricted Virtual Private Cloud (VPC)
 
-Follow these steps to create an Internet-restricted (offline) AWS VPC or see [Work with VPCs](https://docs.aws.amazon.com/vpc/latest/userguide/working-with-vpcs.htmlhttps:/)[AWS VPC documentation](https://docs.aws.amazon.com/vpc/latest/userguide/working-with-vpcs.html) in AWS documentation. The offline VPC must not have a NAT or Internet gateway. Create your offline VPC with private subnets only.
+Follow these steps to create an Internet-restricted (offline) AWS VPC or see [Work with VPCs](https://docs.aws.amazon.com/vpc/latest/userguide/working-with-vpcs.html) in AWS documentation. The offline VPC must not have a NAT or Internet gateway. Create your offline VPC with private subnets only.
 
 1. Create a VPC.
    1. Log in to your AWS Console and select VPC service.
