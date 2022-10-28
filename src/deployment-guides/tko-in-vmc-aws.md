@@ -768,7 +768,7 @@ The Tanzu Kubernetes Grid installer wizard is an easy way to deploy the cluster.
 
 13. If the Tanzu environment is placed behind a proxy, enable the proxy and provide the proxy details.
 
-   **Note:** The procedure shown in this document does not use a proxy to connect to the internet.
+     **Note:** The procedure shown in this document does not use a proxy to connect to the internet.
 
     ![Kubernetes Network](img/tko-in-vmc-aws/deploy-tko-vmc-54.jpg)
 
@@ -786,9 +786,9 @@ The Tanzu Kubernetes Grid installer wizard is an easy way to deploy the cluster.
 
     ![OS Image](img/tko-in-vmc-aws/deploy-tko-vmc-56.jpg)
 
-15.  **(optional):** Select **Participate in the Customer Experience Improvement Program**.
+15.  **(Optional):** Select **Participate in the Customer Experience Improvement Program**.
 
-    ![CEIP Agreement](img/tko-in-vmc-aws/deploy-tko-vmc-57.jpg)
+     ![CEIP Agreement](img/tko-in-vmc-aws/deploy-tko-vmc-57.jpg)
 
 16. Click **Review Configuration** to verify your configuration settings.
 
@@ -814,9 +814,9 @@ The Tanzu Kubernetes Grid installer wizard is an easy way to deploy the cluster.
     tanzu management-cluster get
     ```
 
-   Ensure that the cluster status reports as `running` and the values in the `Ready` column for nodes, etc., are all `True`.
+     Ensure that the cluster status reports as `running` and the values in the `Ready` column for nodes, etc., are all `True`.
 
-    ![Cluster status report](img/tko-in-vmc-aws/deploy-tko-vmc-61.jpg)
+     ![Cluster status report](img/tko-in-vmc-aws/deploy-tko-vmc-61.jpg)
 
    See [Examine the Management Cluster Deployment](https://docs.vmware.com/en/VMware-Tanzu-Kubernetes-Grid/1.5/vmware-tanzu-kubernetes-grid-15/GUID-mgmt-clusters-verify-deployment.html) to perform additional health checks.
 
