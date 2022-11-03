@@ -44,10 +44,11 @@ In an air-gapped environment, there are a couple of possible solutions for using
 - **New Image Registry -** If an image registry solution doesn’t exist in the environment, a new registry instance can be deployed. The easiest way for creating a new image registry instance is installing Harbor using the `docker-compose` method and then pushing the Tanzu Kubernetes Grid binaries to the project.
 
 ## Supported Component Matrix
+
 The following table provides the component versions and interoperability matrix supported with the reference design:
 
 |**Software Components**|**Version**|
-| - | - |
+| --- | --- |
 |Tanzu Kubernetes Grid|1.5.4|
 |VMware vSphere ESXi|7.0 U2 and later|
 |VMware vCenter Server|7.0 U2 and later|
