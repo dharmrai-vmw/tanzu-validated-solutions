@@ -129,7 +129,7 @@ For the deployment of Tanzu Kubernetes Grid in the vSphere environment, it is re
 
 The network reference design can be mapped into this general framework.
 
-![Tanzu for Kubernetes Grid network layout](img/tko-on-vsphere/tko-on-vsphere-vds-3.png)
+![Tanzu for Kubernetes Grid network layout](img/tko-on-vsphere/tko-on-vsphere-vds-3.jpg)
 
 This topology enables the following benefits:
 
@@ -392,6 +392,35 @@ To define different custom configurations for control plane nodes and worker nod
 - `VSPHERE_WORKER_NUM_CPUS: 4`
 - `VSPHERE_WORKER_DISK_GIB: 40`
 - `VSPHERE_WORKER_MEM_MIB: 4096`
+
+## Appendix B - NSX Advanced Load Balancer Sizing Guidelines
+
+### NSX Advanced Load Balancer Controller Sizing Guidelines
+
+Controllers are classified into the following categories:
+
+| **Classification** | **vCPUs** | **Memory (GB)** | **Virtual Services** | **Avi SE Scale** 
+| -------------------- | ----------- | ----------------- | ----------- | -------|
+| Essentials         | 4         | 12              |  0-50          |   0-10
+| Small              | 8         | 24              |  0-200         |  0-100
+| Medium             | 16        | 32              | 200-1000       |100-200
+| Large              | 24        | 48              |1000-5000       |200-400
+
+The number of virtual services that can be deployed per controller cluster is directly proportional to the controller cluster size. See the NSX Advanced Load Balancer [Configuration Maximums Guide](https://configmax.esp.vmware.com/guest?vmwareproduct=NSX%20Advanced%20Load%20Balancer&release=21.1.4&categories=119-0) for more information.
+
+### Service Engine Sizing Guidelines
+
+The service engines can be configured with a minimum of 1 vCPU core and 2 GB RAM up to a maximum of 64 vCPU cores and 256 GB RAM. The following table provides guidance for sizing a service engine VM with regards to performance:
+
+| **Performance metric**   | **Per core performance** | **Maximum performance on a single Service Engine VM** |
+| -------------------------- | -------------------------- | ------------------------------------------------------- |
+| HTTP Throughput          | 5 Gbps                   | 7 Gbps                                                |
+| HTTP requests per second | 50k                      | 175k                                                  |
+| SSL Throughput           | 1 Gbps                   | 7 Gbps                                                |
+| SSL TPS (RSA2K)          | 750                      | 40K                                                   |
+| SSL TPS (ECC)            | 2000                     | 40K                                                   |
+
+Multiple performance vectors or features may have an impact on performance. For instance, to achieve 1 Gb/s of SSL throughput and 2000 TPS of SSL with EC certificates, NSX Advanced Load Balancer recommends two cores.
 
 ## Summary
 Tanzu Kubernetes Grid on vSphere on hyper-converged hardware offers high-performance potential, convenience, and addresses the challenges of creating, testing, and updating on-premises Kubernetes platforms in a consolidated production environment. This validated approach will result in a near-production quality installation with all the application services needed to serve combined or uniquely separated workload types through a combined infrastructure solution.
