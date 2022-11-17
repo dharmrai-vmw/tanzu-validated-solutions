@@ -1,5 +1,6 @@
 
 abc
+airgapped
 Alertmanager
 Antrea
 Bitfusion
@@ -74,6 +75,7 @@ myVmware
 onboarded
 overcommitted
 preconfigured
+proxied
 proxying
 restic
 routable
