@@ -273,16 +273,16 @@ NSX Advanced Load Balancer can be deployed in multiple environments for the same
 
 **Service Engine Group 1**: Service engines part of this service engine group hosts:
 
-* Virtual services for all load balancer functionalities requested by Tanzu Kubernetes Grid management cluster and workload.
-* Virtual services that load balances control plane nodes of all Tanzu Kubernetes Grid clusters.
+* Virtual services that load balances control plane nodes of Management Cluster and Shared services cluster.
+* Virtual services for all load balancer functionalities requested by Tanzu Kubernetes Grid management cluster and Shared services cluster.
 
-**Service Engine Group 2**: Service engines part of this service engine group hosts virtual services for all load balancer functionalities requested by Tanzu Kubernetes Grid workload clusters mapped to this SE group.  
+**Service Engine Group 2**: Service engines part of this service engine group hosts virtual services that load balances control plane nodes & virtual services for all load balancer functionalities requested by the workload clusters mapped to this SE group. 
 
 **Note**:
-
 * Based on your requirements, you can create additional SE groups for the workload clusters.
 * Multiple workload clusters can be mapped to a single SE group.
 * A Tanzu Kubernetes Grid cluster can be mapped to only one SE group for application load balancer services.
+* Control plane VIP for the workload clusters will be placed on the respective Service Engine group assigned through AKO Deployment Config (ADC) during cluster creation.
 
 For information about mapping a specific service engine group to Tanzu Kubernetes Grid workload cluster, see [Configure NSX Advanced Load Balancer in Tanzu Kubernetes Grid Workload Cluster](#workloadalb).
 
@@ -327,7 +327,7 @@ The following components are created in NSX Advanced Load Balancer.
 
     | **Parameter** | **Value** |
     | --- | --- |
-    | High availability mode | N+M (buffer) |
+    | High availability mode | Active/Active |
     | Memory per Service Engine | 4   |
     | vCPU per Service Engine | 2   |
 
