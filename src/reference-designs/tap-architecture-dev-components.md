@@ -1,4 +1,4 @@
-# Tanzu Application Platform Developer Components (Inner-Loop)
+# Tanzu Application Platform Developer Components
 
 Tanzu Application Platform provides development tools which allow developers to quickly build, test, deploy, and manage applications lifecycle.
 
